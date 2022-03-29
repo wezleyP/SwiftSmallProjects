@@ -145,7 +145,7 @@ var arrSet = Set(arr)
 print(arr.count)
 print(arrSet.count)
 
- 
+
          //Day 5
 
  //If
@@ -315,3 +315,93 @@ for i in 1...100_000 {
     }
 }
 print(multiples)
+
+        CheckPoint 3
+
+for i in 1...100 {
+    if i.isMultiple(of: 3) && i.isMultiple(of: 5) {
+      print("FizzBuzz")
+    }
+    else if i.isMultiple(of: 3) {
+      print("Fizz")
+    }
+    else if i.isMultiple(of: 5) {
+      print("Buzz")
+    }
+    else {
+        print(i)
+    }
+}
+
+// Day 7
+
+func printer(a: String) {
+print(a)
+}
+
+printer(a: "Hello there")
+
+let roll = Int.random(in: 1...20)
+
+func printTimesTable(number: Int, end: Int) {
+    for i in 1...end {
+        print("\(i) * \(number) is \(i * number)")
+    }
+}
+
+printTimesTable(number: 5, end: 20)
+
+let root = sqrt(169)
+print(root)
+
+func rollDice() -> Int {
+    return Int.random(in: 1...7)
+}
+
+let result = rollDice()
+print(result)
+
+
+var first = "hello"
+var second = "hey there"
+
+func reader(a: String, b: String) -> Bool {
+    let first = a.sorted()
+    let second = b.sorted()
+    return first == second
+}
+
+reader(a: "hello", b: "hey there")
+
+
+func getUser() -> [String] {
+    ["taylor", "Swift"]
+}
+//Tuples
+
+func getUserTuples() -> (firstName: String, lastName: String) {
+    (firstName: "Taylor", lastName: "Swift")
+}
+//Or
+func getUserTuplesNumbers() -> (String, String) {
+    ("Taylor","Swift")
+}
+
+let (firstName, lastName) = getUserTuples()
+
+print(firstName, lastName)
+
+func isUpperCase(_ string: String) -> Bool {
+    string == string.uppercased()
+}
+let string = "HELLO, WORLD"
+let result = isUpperCase(string)
+
+func printTimesTable(for number: Int) {
+    for i in 1...12 {
+        print("\(i) x \(number) is \(i * number)")
+    }
+}
+printTimesTable(for: 5)
+
+
