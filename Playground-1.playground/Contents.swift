@@ -405,3 +405,77 @@ func printTimesTable(for number: Int) {
 printTimesTable(for: 5)
 
 
+// Day 8
+
+// function parameters
+
+func yessir(dessert : String = "brownies") {
+print(dessert)
+}
+
+yessir()
+
+enum PasswordError: Error {
+case short, obvious
+}
+
+func checkPassword(_ password: String) throws -> String {
+
+if password.count < 5 {
+throw PasswordError.short
+
+}
+if password == "12345" {
+throw PasswordError.short
+
+}
+
+if password.count < 8 {
+return "Ok"
+} else if password.count < 10 {
+return "Good"
+} else {
+return "Excellent"
+}
+}
+let string = "12345"
+
+do {
+let result = try checkPassword(string)
+print(result)
+} catch PasswordError.short {
+print("error... Too short")
+} catch PasswordError.obvious {
+print("error... Too obvious")
+} catch {
+print("error...")
+}
+
+//CheckPoint 4
+
+enum SquareRootErrors : Error {
+case outOfBounds, noRoot
+}
+
+func square(for number: Int) throws -> Int {
+guard number >= 1 && number <= 10000 else {
+throw SquareRootErrors.outOfBounds
+}
+
+for i in 1...number {
+if number == i * i {
+    return i
+}
+}
+
+throw SquareRootErrors.noRoot
+}
+
+
+let number = 100
+do {
+let result =  try square( for : number )
+print("the square root of your number is \(result)")
+} catch {
+print("out of bounds")
+}
