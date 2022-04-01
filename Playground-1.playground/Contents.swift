@@ -479,3 +479,137 @@ print("the square root of your number is \(result)")
 } catch {
 print("out of bounds")
 }
+
+
+// day 9
+
+
+func greetUser() {
+    print("hi there")
+}
+ greetUser()
+var greetCopy = greetUser
+
+let sayHello = {
+    print("Hi there")
+}
+sayHello()
+
+let team = ["gloria", "Sue", "Piper", "Tiffany", "tasha"]
+let sortedTeam = team.sorted()
+print(sortedTeam)
+
+func captainFirstSorted(name1: String, name2: String) -> Bool {
+    if name1 == "Sue" {
+        return true
+    } else if name2 == "Sue" {
+        return false
+    }
+
+    return name1 < name2
+}
+//let captainFirstTeam = team.sorted(by:  captainFirstSorted)
+//print(captainFirstTeam)
+
+let captainFirstTeam = team.sorted(by: { (name1: String, name2: String) -> Bool in
+    if name1 == "Sue" {
+        return true
+    } else if name2 == "Sue" {
+        return false
+    }
+
+    return name1 < name2
+})
+
+print(captainFirstTeam)
+
+let team = ["Gloria", "Sue", "Piper", "Tiffany", "Tasha"]
+
+let captainFirstTeam = team.sorted {
+    if $0 == "Sue" {
+        return true
+    } else if $1 == "Sue" {
+        return false
+    }
+
+    return $0 < $1
+}
+
+print(captainFirstTeam)
+
+
+let tOnly = team.filter { $0.hasPrefix("T") }
+print(tOnly)
+
+let uppercaseTeam = team.map { $0.uppercased() }
+print(uppercaseTeam)
+
+func animate( duration: Int = 3 ) {
+    print("Fade out")
+}
+
+func makeArray(size: Int, using generator: () -> Int) -> [Int] {
+    var numbers = [Int]()
+
+    for _ in 0..<size {
+        let newNumber = generator()
+        numbers.append(newNumber)
+    }
+    return numbers
+}
+
+func doImportantWork(first: () -> Void, second: () -> Void, third: () -> Void) {
+    print("before first")
+    first()
+    print("before second")
+    second()
+    print("before third")
+    third()
+}
+
+doImportantWork{
+    print("first")
+} second: {
+    print("second")
+} third: {
+    print("third")
+}
+
+func knitting(knit: () -> Void) {
+    print("getting ready to knit")
+    knit()
+}
+knitting {
+    print("knitting")
+}
+
+func repeatAction(count: Int, action: () -> Void) {
+    for _ in 0..<count {
+        action()
+    }
+}
+repeatAction(count: 5) {
+    print("Hello, world!")
+}
+
+
+    //CheckPoint 5
+//first try
+let luckyNumbers = [7,4,38,21,16,15,12,33,31,49]
+
+func doImportantWork() {
+    let newArr = luckyNumbers.filter{ $0 % 2 == 1 }
+    let newerArray = newArr.sorted(by: { $1 > $0 } )
+    var _ = newerArray.map { print("\($0) is the lucky number") }
+}
+doImportantWork()
+
+//second
+
+let _ = luckyNumbers
+    .filter{ $0 % 2 == 1 }
+    .sorted(by: { $1 > $0 } )
+    .map { print("\($0) is the lucky number") }
+
+    // way easier chaining functions like this!
+    // had to google for a while to come up with a solution like this
