@@ -613,3 +613,91 @@ let _ = luckyNumbers
 
     // way easier chaining functions like this!
     // had to google for a while to come up with a solution like this
+
+
+
+        //Day 10
+struct Album {
+    let title: String
+    let artist: String
+    let year: Int
+
+func printSummary() {
+    print("\(title) (\(year)) by \(artist)")
+    }
+}
+
+let red = Album(title: "red", artist: "Taylor", year: 2012)
+
+print(red.title)
+red.printSummary()
+
+struct Employee {
+let name: String
+var vacation: Int
+
+mutating func takeVacation(days: Int) {
+if vacation > days {
+    vacation -= days
+    print("vacation time!")
+    print("Days remaining: \(vacation)")
+} else {
+    print("OOps there arent days left.")
+}
+}
+}
+
+var archer = Employee(name: "Sterling", vacation: 14)
+archer.takeVacation(days: 5)
+print(archer.vacation)
+
+//computed
+
+struct Employees {
+let name: String
+var vacationAllocated = 14
+var vacationTaken = 0
+
+var vacationRemaining: Int {
+    get {
+        vacationAllocated - vacationTaken
+    }
+    set {
+        vacationAllocated = vacationTaken + newValue
+        }
+    }
+}
+
+var archer2 = Employees(name: "Sterling", vacationAllocated: 14)
+
+archer2.vacationTaken += 4
+archer2.vacationRemaining = 5
+print(archer2.vacationAllocated)
+
+struct App {
+var contacts = [String]() {
+    willSet {
+        print("current \(contacts)")
+        print("New \(newValue)")
+    }
+    didSet {
+        print("now \(contacts.count)")
+        print("old was \(oldValue)")
+        }
+    }
+}
+
+var app = App()
+app.contacts.append("Adrian")
+app.contacts.append("Allen")
+
+
+struct Player {
+let name: String
+let number: Int
+
+init(name: String, number: Int) {
+        self.name = name
+        self.number = number
+    }
+}
