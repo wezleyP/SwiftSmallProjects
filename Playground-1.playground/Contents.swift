@@ -701,3 +701,113 @@ init(name: String, number: Int) {
         self.number = number
     }
 }
+
+/                //Practice problems
+// check for plural✅
+func plural(str: String) -> Bool {
+    if str.hasSuffix("s") {
+        return true
+    } else {
+        return false
+    }
+}
+
+//plural(str: "plurals")
+
+//reverse string
+func flip(a: String) {
+    let rev = String(a.reversed())
+    print(rev)
+}
+//flip(a: "wes")
+
+// isogram
+
+// pal
+func pal(a: String) -> Bool {
+    let rev = String(a.reversed())
+    print(rev)
+    if a == rev {
+        print("true")
+        return true
+    } else {
+        print("false")
+        return false
+    }
+}
+//pal(a: "mom")
+
+//dict
+var guests = [ "Mike" : "Canada",
+               "Jane" : "Australia",
+               "Angela" : "Germany",
+               "Robert" : "Nigeria" ]
+
+func dic(a: String) {
+    for (name, place) in guests {
+        if name == a {
+            print("\(name) is from \(place).")
+        }
+    }
+}
+// dic(a: "Mike")
+
+// factorials
+func calculateFactorial(of number: Int) -> Int {
+    if number == 1 {
+        return 1
+    } else {
+        return number * calculateFactorial(of:number - 1)
+    }
+}
+
+let fact = calculateFactorial(of: 5)
+print("Factorial: \(fact)")
+
+
+        // Day 11
+
+struct bank {
+    private var acctNumb = 0
+    fileprivate var acctNumb2 = 0
+    public var acctNumb3 = 0
+    private(set) var acctNumb4 = 0
+}
+
+//Static
+struct School {
+    static var studentCount = 0
+    static func add(student: String) {
+        print("\(student) joined the school.")
+        studentCount += 1
+    }
+}
+
+School.add(student:  "taylor")
+
+struct Employee {
+    let userName: String
+    let password: String
+    
+    static let example = Employee(userName: "yuh", password: "hair")
+}
+print(Employee.example.userName)
+
+
+    //Checkpoint 6
+struct Car {
+    let model: String = "bronco"
+    let seats: Int = 2
+    var gear: Int = 1
+
+    mutating func switchGearUp() {
+        if gear > 0 && gear < 10 {
+            gear += 1
+        }
+    }
+    mutating func switchGearDown() {
+        if gear > 0 && gear < 10 {
+            gear -= 1
+        }
+    }
+} //Car
