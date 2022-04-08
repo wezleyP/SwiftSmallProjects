@@ -811,3 +811,188 @@ struct Car {
         }
     }
 } //Car
+
+
+
+// Day 12
+
+// Classes
+// Similarities , properties, methods, property observers, access, init
+
+
+class Game {
+    var score = 0 {
+    didSet {
+        print("score is now \(score)")
+        }
+    }
+}
+
+var newGame = Game()
+newGame.score += 10
+
+//inheritance
+class Employee {
+    let hours: Int
+    init(hours: Int) {
+        self.hours = hours
+}
+
+    func printSummary() {
+        print(" I work \(hours) a day")
+    }
+}
+
+final class Developer: Employee {
+    func work() {
+    print("Im writing code for  \(hours)")
+}
+
+override func printSummary() {
+    print("im a developer so i code and mostly waste time but ill work \(hours) hours a day usually")
+    }
+}
+
+let robert = Developer(hours: 10)
+robert.work()
+
+let novall = Developer(hours: 8)
+novall.printSummary()
+
+//inits
+class Vehicle {
+    let isElectric: Bool
+    init(isElectric: Bool) {
+    self.isElectric = isElectric
+    }
+}
+
+class Car: Vehicle {
+    let isConvertible: Bool
+    init(isElectric: Bool, isConvertible: Bool) {
+        self.isConvertible = isConvertible
+        super.init(isElectric: isElectric)
+    }
+}
+
+let tesla = Car(isElectric: true, isConvertible: true)
+
+
+
+class User {
+    var username = "anonymous"
+
+    func copy() -> User {
+        let user = User()
+        user.username = username
+        return user
+    }
+}
+var user1 = User()
+var user2 = user1
+user2.username = "tay"
+
+print(user1.username)
+print(user2.username)
+
+//deinitializer
+
+class User2 {
+let id: Int
+
+init(id: Int) {
+    self.id = id
+        print("user \(id) alive")
+
+    }
+        deinit {
+            print("User \(id) dead")
+    }
+}
+
+var users = [User2]()
+
+    for i in 1...3 {
+    let user = User2(id: i)
+        print("User \(user.id): im in control")
+        users.append(user)
+    }
+print("loop finished")
+users.removeAll()
+print("Array is clear")
+
+
+//vars in classes
+
+class User3 {
+    var name = "Paul"
+}
+var user = User3()
+user.name = "Taylor"
+user = User3()
+print(user.name)
+
+ //Checkpoint 7
+
+
+class Animal {
+    var legs: Int
+
+    init(legs: Int) {
+    self.legs = legs
+    }
+}
+
+class Dog: Animal {
+    var speech: String
+
+    func speak(speech: String, legs: Int) {
+        print("hello im a \(speech) with \(legs) legs")
+    }
+
+init(speech: String, legs: Int) {
+        self.speech = speech
+        super.init(legs: legs)
+    }
+}
+
+class Corgi: Dog {
+    override func speak(speech: String, legs: Int) {
+    print("im a corgi that has \(legs) legs and I wanna say \(speech)")
+    }
+}
+class Poodle: Dog {
+    override func speak(speech: String, legs: Int) {
+        print("im a Poodle that has \(legs) legs and I wanna say \(speech)")
+    }
+}
+var dog = Corgi(speech: "speech", legs: 4)
+print(dog.speak(speech: "hi", legs: 4))
+
+class Cat: Animal {
+    var speech: String
+    var isTame: Bool
+
+    func speak(speech: String, legs: Int) {
+        print("hello im a \(speech) with \(legs) legs")
+}
+
+init(speech: String, legs: Int, isTame: Bool) {
+    self.speech = speech
+    self.isTame = isTame
+    super.init(legs: legs)
+    }
+}
+
+class Persian: Cat {
+    override func speak(speech: String, legs: Int) {
+        print("im a persian that has \(legs) legs and I wanna say \(speech)")
+    }
+}
+class Lion: Cat {
+    override func speak(speech: String, legs: Int) {
+        print("im a lion that has \(legs) legs and I wanna say \(speech)")
+    }
+}
+var persian = Persian(speech: "persian", legs: 4, isTame: true)
+print(persian.speak(speech: "persian", legs: 4))
