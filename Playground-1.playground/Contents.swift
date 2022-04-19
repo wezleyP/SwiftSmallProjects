@@ -996,3 +996,132 @@ class Lion: Cat {
 }
 var persian = Persian(speech: "persian", legs: 4, isTame: true)
 print(persian.speak(speech: "persian", legs: 4))
+
+protocol Vehicle {
+    var name: String {get}
+    var currentPass: Int { get set }
+    func estimateTime(for distance: Int) -> Int
+    func travel(distance: Int)
+}
+
+struct Car: Vehicle {
+
+    let name = "Car"
+    var currentPass = 1
+
+    func estimateTime(for distance: Int) -> Int {
+        distance / 50
+    }
+
+    func travel(distance: Int) {
+        print("im driving \(distance)m")
+    }
+}
+struct Bike: Vehicle {
+
+    let name = "Bicycle"
+    var currentPass = 1
+
+    func estimateTime(for distance: Int) -> Int {
+        distance / 10
+    }
+
+    func travel(distance: Int) {
+        print("im cycling \(distance)m")
+    }
+}
+
+func commute(distance: Int, using vehicle: Vehicle) {
+    if vehicle.estimateTime(for: distance) > 100 {
+        print("Thats too slow")
+    } else {
+        vehicle.travel(distance: distance)
+    }
+}
+
+func getTravelEst (using vehicles: [Vehicle], distance: Int) {
+    for vehicle in vehicles {
+        let estimate = vehicle.estimateTime(for: distance)
+        print( "\(vehicle.name) : \(estimate) hours to travel \(distance)")
+    }
+}
+
+let car = Car()
+commute(distance: 100, using: car)
+let bike = Bike()
+commute(distance: 50, using: bike)
+
+getTravelEst(using: [bike, car], distance: 150)
+
+
+ protocol extensions
+
+extension Collection {
+    var isNotEmpty: Bool {
+        isEmpty == false
+    }
+}
+
+let guests = [ "Mario", "Luigi", "Peach"]
+
+if guests.isNotEmpty {
+    print("Guest count: \(guests.count)")
+}
+
+protocol Person {
+    var name: String {get}
+    func sayHello()
+}
+
+extension Person {
+    func sayHello() {
+        print("Hi, I'm \(name)")
+    }
+}
+
+struct Employee: Person {
+    let name: String
+}
+
+let taylor = Employee(name: "Taylor Swift")
+taylor.sayHello()
+
+
+ //Checkpoint 8
+
+ protocol Building
+     rooms: Int
+     cost: Int
+     realEstateMethod: String
+         func salesSummary() { print(summary) }
+
+ struct House
+ struct office
+
+protocol Building {
+    var rooms: Int {get}
+    var cost: Int {get}
+    var realEstateAgent: String {get}
+    func salesSummary()
+    
+}
+
+extension Building {
+    func salesSummary() {
+        print("The building has \(rooms) rooms. The cost is \(cost), and the agent is \(realEstateAgent)")
+    }
+}
+
+struct House: Building {
+    var rooms: Int
+    var cost: Int
+    var realEstateAgent: String
+}
+struct Office: Building {
+    var rooms: Int
+    var cost: Int
+    var realEstateAgent: String
+}
+
+let house1 = House(rooms: 3, cost: 50_000, realEstateAgent: "Pearl")
+house1.salesSummary()
