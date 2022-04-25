@@ -996,132 +996,207 @@ class Lion: Cat {
 }
 var persian = Persian(speech: "persian", legs: 4, isTame: true)
 print(persian.speak(speech: "persian", legs: 4))
+//
+//protocol Vehicle {
+//    var name: String {get}
+//    var currentPass: Int { get set }
+//    func estimateTime(for distance: Int) -> Int
+//    func travel(distance: Int)
+//}
+//
+//struct Car: Vehicle {
+//
+//    let name = "Car"
+//    var currentPass = 1
+//
+//    func estimateTime(for distance: Int) -> Int {
+//        distance / 50
+//    }
+//
+//    func travel(distance: Int) {
+//        print("im driving \(distance)m")
+//    }
+//}
+//struct Bike: Vehicle {
+//
+//    let name = "Bicycle"
+//    var currentPass = 1
+//
+//    func estimateTime(for distance: Int) -> Int {
+//        distance / 10
+//    }
+//
+//    func travel(distance: Int) {
+//        print("im cycling \(distance)m")
+//    }
+//}
+//
+//func commute(distance: Int, using vehicle: Vehicle) {
+//    if vehicle.estimateTime(for: distance) > 100 {
+//        print("Thats too slow")
+//    } else {
+//        vehicle.travel(distance: distance)
+//    }
+//}
+//
+//func getTravelEst (using vehicles: [Vehicle], distance: Int) {
+//    for vehicle in vehicles {
+//        let estimate = vehicle.estimateTime(for: distance)
+//        print( "\(vehicle.name) : \(estimate) hours to travel \(distance)")
+//    }
+//}
+//
+//let car = Car()
+//commute(distance: 100, using: car)
+//let bike = Bike()
+//commute(distance: 50, using: bike)
+//
+//getTravelEst(using: [bike, car], distance: 150)
+//
+//
+// protocol extensions
+//
+//extension Collection {
+//    var isNotEmpty: Bool {
+//        isEmpty == false
+//    }
+//}
+//
+//let guests = [ "Mario", "Luigi", "Peach"]
+//
+//if guests.isNotEmpty {
+//    print("Guest count: \(guests.count)")
+//}
+//
+//protocol Person {
+//    var name: String {get}
+//    func sayHello()
+//}
+//
+//extension Person {
+//    func sayHello() {
+//        print("Hi, I'm \(name)")
+//    }
+//}
+//
+//struct Employee: Person {
+//    let name: String
+//}
+//
+//let taylor = Employee(name: "Taylor Swift")
+//taylor.sayHello()
+//
+//
+// //Checkpoint 8
+//
+// protocol Building
+//     rooms: Int
+//     cost: Int
+//     realEstateMethod: String
+//         func salesSummary() { print(summary) }
+//
+// struct House
+// struct office
+//
+//protocol Building {
+//    var rooms: Int {get}
+//    var cost: Int {get}
+//    var realEstateAgent: String {get}
+//    func salesSummary()
+//
+//}
+//
+//extension Building {
+//    func salesSummary() {
+//        print("The building has \(rooms) rooms. The cost is \(cost), and the agent is \(realEstateAgent)")
+//    }
+//}
+//
+//struct House: Building {
+//    var rooms: Int
+//    var cost: Int
+//    var realEstateAgent: String
+//}
+//struct Office: Building {
+//    var rooms: Int
+//    var cost: Int
+//    var realEstateAgent: String
+//}
+//
+//let house1 = House(rooms: 3, cost: 50_000, realEstateAgent: "Pearl")
+//house1.salesSummary()
 
-protocol Vehicle {
-    var name: String {get}
-    var currentPass: Int { get set }
-    func estimateTime(for distance: Int) -> Int
-    func travel(distance: Int)
+        // Day 14
+var username2: String? = nil
+
+if let unwrapped = username2 {
+    print("We got user: \(unwrapped)")
+} else {
+    print("nil")
 }
 
-struct Car: Vehicle {
-
-    let name = "Car"
-    var currentPass = 1
-
-    func estimateTime(for distance: Int) -> Int {
-        distance / 50
-    }
-
-    func travel(distance: Int) {
-        print("im driving \(distance)m")
-    }
-}
-struct Bike: Vehicle {
-
-    let name = "Bicycle"
-    var currentPass = 1
-
-    func estimateTime(for distance: Int) -> Int {
-        distance / 10
-    }
-
-    func travel(distance: Int) {
-        print("im cycling \(distance)m")
-    }
+func square(number: Int) -> Int {
+   number * number
 }
 
-func commute(distance: Int, using vehicle: Vehicle) {
-    if vehicle.estimateTime(for: distance) > 100 {
-        print("Thats too slow")
-    } else {
-        vehicle.travel(distance: distance)
-    }
+var number3: Int? = nil
+
+if let number = number3 {
+    print(square(number: number3))
 }
 
-func getTravelEst (using vehicles: [Vehicle], distance: Int) {
-    for vehicle in vehicles {
-        let estimate = vehicle.estimateTime(for: distance)
-        print( "\(vehicle.name) : \(estimate) hours to travel \(distance)")
-    }
+var myVar: Int? = 3
+
+//if let unwrapped = myVar {
+//    // run if myvar has value
+//}
+//
+//guard let unwrapped = myVar else {
+//    // run if myvar has no value
+//}
+
+let tvShows = ["Archer", "Babylon", "Ted"]
+let favorite = tvShows.randomElement() ?? "None"
+
+struct Book {
+    let title: String
+    let author3: String?
 }
 
-let car = Car()
-commute(distance: 100, using: car)
-let bike = Bike()
-commute(distance: 50, using: bike)
+let book = Book(title: "Beowulf", author3: nil)
+let author3 = book.author3 ?? "Anonymous"
+print(author3)
 
-getTravelEst(using: [bike, car], distance: 150)
-
-
- protocol extensions
-
-extension Collection {
-    var isNotEmpty: Bool {
-        isEmpty == false
-    }
+struct Book2 {
+    let title: String
+    let author: String?
 }
 
-let guests = [ "Mario", "Luigi", "Peach"]
+var book2: Book2? = nil
+let author = book2?.author?.first?.uppercased() ?? "A"
+print(author)
 
-if guests.isNotEmpty {
-    print("Guest count: \(guests.count)")
+enum UserError: Error {
+    case badID, networkFailed
 }
 
-protocol Person {
-    var name: String {get}
-    func sayHello()
+func getUser(id: Int) throws -> String {
+    throw UserError.networkFailed
 }
 
-extension Person {
-    func sayHello() {
-        print("Hi, I'm \(name)")
-    }
+if let user = try? getUser(id: 23) {
+    print("User: \(user)")
 }
 
-struct Employee: Person {
-    let name: String
-}
+let user3 = (try? getUser(id: 23)) ?? "Anonymous"
 
-let taylor = Employee(name: "Taylor Swift")
-taylor.sayHello()
+    //Checkpoint 9
+//let one = [1...100]
+//let arr = [Int]?
+//let newArr = arr.randomElement() ?? "A"
+//print(newArr)
 
+//guess number one
 
- //Checkpoint 8
-
- protocol Building
-     rooms: Int
-     cost: Int
-     realEstateMethod: String
-         func salesSummary() { print(summary) }
-
- struct House
- struct office
-
-protocol Building {
-    var rooms: Int {get}
-    var cost: Int {get}
-    var realEstateAgent: String {get}
-    func salesSummary()
-    
-}
-
-extension Building {
-    func salesSummary() {
-        print("The building has \(rooms) rooms. The cost is \(cost), and the agent is \(realEstateAgent)")
-    }
-}
-
-struct House: Building {
-    var rooms: Int
-    var cost: Int
-    var realEstateAgent: String
-}
-struct Office: Building {
-    var rooms: Int
-    var cost: Int
-    var realEstateAgent: String
-}
-
-let house1 = House(rooms: 3, cost: 50_000, realEstateAgent: "Pearl")
-house1.salesSummary()
+func getRandomNumb(from arr: [Int]?) -> Int { arr?.randomElement() ?? Int.random(in: 1...100)}
+print(getRandomNumb(from: nil))
