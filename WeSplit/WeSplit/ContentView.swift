@@ -27,6 +27,10 @@ struct ContentView: View {
         return amountPerPerson
     }
     
+    var grandTotal : Double {
+        Double(totalPerPerson) * Double(numberOfPeople + 2)
+    }
+    
     var body: some View {
         
         NavigationView {
@@ -37,11 +41,11 @@ struct ContentView: View {
                             .keyboardType(.decimalPad)
                             .focused($amountIsFocused)
                     
-                    Picker("Number of people", selection: $numberOfPeople){
+                    Picker("Number of people", selection: $numberOfPeople) {
                         ForEach(2..<100) {
                             Text("\($0) people")
                         }
-                    } //S
+                    } //P
                 } //F
                 
                 Section {
@@ -58,7 +62,15 @@ struct ContentView: View {
                 Section {
                     Text(totalPerPerson, format: .currency(code: Locale.current.currencyCode ?? "USD"))
                         
-                }//S
+                }  header: {
+                    Text("Amount Per person")
+                }
+                Section {
+                    Text(grandTotal, format: .currency(code: Locale.current.currencyCode ?? "USD"))
+                        
+                }  header: {
+                    Text("Grand Total")
+                }
             }//F
             .navigationTitle("WeSplit")
             .toolbar {
