@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+
+
 struct ContentView: View {
     @State private var showingScore = false
     @State private var endGame = false
@@ -19,14 +21,10 @@ struct ContentView: View {
     @State private var correctAnswer = Int.random(in: 0...2)
     
     @State private var showingAlert = false
-    
+
     var body: some View {
         ZStack {
-            RadialGradient(stops: [
-                .init(color: Color(red: 0.1, green: 0.2, blue: 0.4), location: 0.05),
-                .init(color: Color(red: 0.4, green: 0.05, blue: 0.5), location: 0.3)
-            ], center: .top, startRadius: 200, endRadius: 700)
-                .ignoresSafeArea()
+            
             
             VStack {
                 
@@ -53,6 +51,7 @@ struct ContentView: View {
                                 .renderingMode(.original)
                                 .clipShape(Capsule())
                                 .shadow(radius: 5)
+                        }
                         }
                     }
                 }
@@ -94,10 +93,11 @@ struct ContentView: View {
             scoreTitle = "Wrong! That's \(countries[number])."
             showingScore = true
         }
+        counter += 1
         if counter == 8 {
             endGame = true
         }
-        counter += 1
+        
     }
     func askQuestion() {
         countries.shuffle()
