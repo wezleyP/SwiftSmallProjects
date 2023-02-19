@@ -1,3 +1,11 @@
-# 100days notes!
+# A collection of my favorite Swift projects
 
-To keep myself accountable I will be pushing new sets of notes from my 100 Days in Swift challenge!
+# What I learned
+
+using multiple files in swift
+
+inheritance
+
+classes and structs
+
+So much More!
